@@ -1,0 +1,24 @@
+{
+    "name": "ditc employee 1",
+    "address": "ctg",
+    "email": "admin@ditc.com",
+    "designationId":2,
+    "salary":84000,
+    "permanent":true,
+    "Experiences":[
+        {
+            "designation":"Manager",
+            "comapany":"Google",
+            "startDate":"2021-12-11",
+            "endDate":"2023-12-11"
+        },
+        {
+            "designation":"asst. Manager",
+            "comapany":"Intel",
+            "startDate":"2019-12-11",
+            "endDate":"2021-12-11"
+        }
+    ]
+
+
+}
