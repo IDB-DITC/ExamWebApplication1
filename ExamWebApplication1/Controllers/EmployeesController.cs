@@ -13,6 +13,7 @@ using ExamWebApplication1.Models;
 
 namespace ExamWebApplication1.Controllers
 {
+    [Authorize]
     public class EmployeesController : ApiController
     {
         private AppDb db = new AppDb();
@@ -40,6 +41,10 @@ namespace ExamWebApplication1.Controllers
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutEmployee(int id, Employee employee)
         {
+
+
+
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

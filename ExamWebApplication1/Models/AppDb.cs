@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -14,7 +15,7 @@ namespace ExamWebApplication1.Models
 
 
         public DbSet<UserInfo> Users { get; set; }
-		public AppDb():base("myexamappdb")
+		public AppDb():base("dbConn")
         {
             
         }
