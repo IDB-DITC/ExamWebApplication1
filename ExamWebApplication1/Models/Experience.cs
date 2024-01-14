@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -31,8 +32,8 @@ namespace ExamWebApplication1.Models
 
         public int EmployeeID { get; set; }
 
-
-        //public virtual Employee Employee { get; set; }
+		[JsonIgnore]
+		public virtual Employee Employee { get; set; }
 
     }
 }

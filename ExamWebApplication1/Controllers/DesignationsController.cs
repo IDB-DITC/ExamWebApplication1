@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -13,6 +14,7 @@ using ExamWebApplication1.Models;
 
 namespace ExamWebApplication1.Controllers
 {
+    [Authorize]
     public class DesignationsController : ApiController
     {
         private AppDb db = new AppDb();
