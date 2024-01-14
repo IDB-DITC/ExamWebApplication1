@@ -50,7 +50,11 @@ namespace ExamWebApplication1.Controllers
             var credential = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var userClaims = new List<Claim>();
+<<<<<<< HEAD
             userClaims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
+=======
+            userClaims.Add(new Claim(JwtRegisteredClaimNames.Jti, loginUser.UserId.ToString()));
+>>>>>>> master
             userClaims.Add(new Claim(ClaimTypes.Name, loginUser.UserName));
             userClaims.Add(new Claim(ClaimTypes.Role, loginUser.Role.ToString()));
 

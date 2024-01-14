@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Configuration;
+=======
+>>>>>>> master
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -14,7 +17,10 @@ using ExamWebApplication1.Models;
 
 namespace ExamWebApplication1.Controllers
 {
+<<<<<<< HEAD
     [Authorize]
+=======
+>>>>>>> master
     public class DesignationsController : ApiController
     {
         private AppDb db = new AppDb();

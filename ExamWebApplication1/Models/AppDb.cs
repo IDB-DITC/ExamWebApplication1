@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Configuration;
+=======
+>>>>>>> master
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -15,7 +18,11 @@ namespace ExamWebApplication1.Models
 
 
         public DbSet<UserInfo> Users { get; set; }
+<<<<<<< HEAD
 		public AppDb():base("dbConn")
+=======
+		public AppDb():base("myexamappdb")
+>>>>>>> master
         {
             
         }
