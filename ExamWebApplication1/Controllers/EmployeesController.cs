@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ExamWebApplication1.Models;
@@ -23,6 +25,16 @@ namespace ExamWebApplication1.Controllers
         {
             return db.Employees.Include(e => e.Experiences).Include(e => e.Designation);
         }
+
+
+
+
+
+
+
+
+
+
 
         // GET: api/Employees/5
         [ResponseType(typeof(Employee))]
@@ -55,9 +67,36 @@ namespace ExamWebApplication1.Controllers
                 return BadRequest();
             }
 
-            db.Entry(employee).State = EntityState.Modified;
 
-            try
+            db.Experiences.RemoveRange(db.Experiences.Where(ex => ex.EmployeeID == employee.ID));
+           // db.SaveChanges();
+
+            foreach (var exp in employee.Experiences)
+			{
+
+				exp.EmployeeID = employee.ID;
+
+				db.Experiences.Add(exp);
+				//db.SaveChanges();
+
+				//if (exp.ID == 0)
+    //            {
+				//	exp.EmployeeID = employee.ID;
+
+				//	db.Experiences.Add(exp);
+    //            }
+    //            else
+    //            {
+				//	db.Entry(exp).State = EntityState.Modified;
+				//}
+				////exp.EmployeeID = employee.ID;
+				////db.Entry(exp).State = EntityState.Added;
+				//db.SaveChanges();
+			}
+
+
+			db.Entry(employee).State = EntityState.Modified;
+			try
             {
                 await db.SaveChangesAsync();
             }
@@ -73,11 +112,36 @@ namespace ExamWebApplication1.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok("update success");
         }
 
-        // POST: api/Employees
-        [ResponseType(typeof(Employee))]
+		[ResponseType(typeof(string))]
+        [HttpPost]
+        [Route("~/Employees/UploadImage")]
+		public IHttpActionResult UploadImage()
+        {
+
+			var upload = HttpContext.Current.Request.Files.Count > 0 ?
+		HttpContext.Current.Request.Files[0] : null;
+
+
+			if (upload is null) return BadRequest();
+
+			
+				string ImageUrl = "/Images/" + Guid.NewGuid() + Path.GetExtension(upload.FileName);
+
+
+			upload.SaveAs(HttpContext.Current.Server.MapPath( ImageUrl));
+
+            return Ok(ImageUrl);
+			
+		}
+
+
+
+
+		// POST: api/Employees
+		[ResponseType(typeof(Employee))]
         public async Task<IHttpActionResult> PostEmployee(Employee employee)
         {
             if (!ModelState.IsValid)

@@ -52,10 +52,9 @@ namespace ExamWebApplication1.Controllers
             var userClaims = new List<Claim>();
             userClaims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
             userClaims.Add(new Claim(ClaimTypes.Name, loginUser.UserName));
-            userClaims.Add(new Claim(ClaimTypes.Role, loginUser.Role.ToString()));
+            userClaims.Add(new Claim(ClaimTypes.Role, loginUser.Role));
 
-
-			var token = new JwtSecurityToken(issuer, audience, userClaims, expires: DateTime.UtcNow.AddDays(1), signingCredentials: credential);
+			var token = new JwtSecurityToken(issuer, audience, userClaims, expires: DateTime.UtcNow.AddYears(10), signingCredentials: credential);
 
 
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);

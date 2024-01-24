@@ -41,16 +41,6 @@ namespace ExamWebApplication1.Models
         public string ImageUrl { get; set; }
 
 
-
-
-
-
-        
-        [NotMapped]
-        [DataType(DataType.Upload)]
-        [ScaffoldColumn(true)]
-
-        public HttpPostedFileBase ImageUpload { get; set; }
         public virtual Designation Designation { get; set; }
 
 
